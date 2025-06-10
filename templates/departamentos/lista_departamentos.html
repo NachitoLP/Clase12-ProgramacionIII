@@ -1,0 +1,12 @@
+{% extends 'utilidades/pagina.html' %}
+
+{% block content %}
+    <div style="display: block; margin: 50px auto; text-align: center;">
+        <h4>Departamentos</h4>
+        <ul style="padding: 0">
+            {% for departamento in lista_departamentos %}
+                <li style="list-style: none;">{{departamento.nombreDto}} - {{departamento.siglaDto}}</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock content %}

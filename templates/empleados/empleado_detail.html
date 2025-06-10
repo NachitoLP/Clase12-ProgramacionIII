@@ -1,0 +1,24 @@
+{% extends 'utilidades/pagina.html' %}
+
+{% block content %}
+<div class="container d-flex justify-content-center my-5">
+    <div class="w-50 p-4 border rounded shadow-sm bg-light">
+        <h2 class="mb-4 text-center">Detalle del Empleado</h2>
+
+        <ul class="list-group mb-4">
+            <li class="list-group-item"><strong>Nombre:</strong> {{ empleado.nombreEmp }}</li>
+            <li class="list-group-item"><strong>Apellido:</strong> {{ empleado.apellidoEmp }}</li>
+            <li class="list-group-item"><strong>Rol:</strong> {{ empleado.rolEmp }}</li>
+            <li class="list-group-item"><strong>Departamento:</strong> {{ empleado.departamentoEmp }}</li>
+            <li class="list-group-item"><strong>Fecha de Nacimiento:</strong> {{ empleado.fechaNac }}</li>
+            <li class="list-group-item"><strong>Observaciones:</strong> {{ empleado.observaciones|safe }}</li>
+        </ul>
+
+        <div class="d-flex justify-content-center gap-3">
+            <a href="{% url 'empleado_update' empleado.pk %}" class="btn btn-warning text-white px-4">✏️ Editar</a>
+            <a href="{% url 'empleado_delete' empleado.pk %}" class="btn btn-danger px-4">🗑️ Eliminar</a>
+            <a href="{% url 'empleado_list' %}" class="btn btn-secondary px-4">🔙 Volver</a>
+        </div>
+    </div>
+</div>
+{% endblock content %}

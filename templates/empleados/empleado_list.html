@@ -1,0 +1,48 @@
+{% extends 'utilidades/pagina.html' %}
+{% block content %}
+<div class="container my-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Empleados</h2>
+        <a href="{% url 'empleado_create' %}" class="btn btn-success">
+            ➕ Crear nuevo empleado
+        </a>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-hover align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th>Apellido</th>
+                    <th>Nombre</th>
+                    <th>Rol</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for empleado in empleados %}
+                <tr>
+                    <td>{{ empleado.apellidoEmp }}</td>
+                    <td>{{ empleado.nombreEmp }}</td>
+                    <td>{{ empleado.rolEmp }}</td>
+                    <td>
+                        <a href="{% url 'empleado_detail' empleado.pk %}" class="btn btn-sm btn-info me-1" title="Ver">
+                            🔍
+                        </a>
+                        <a href="{% url 'empleado_update' empleado.pk %}" class="btn btn-sm btn-warning text-white me-1" title="Editar">
+                            ✏️
+                        </a>
+                        <a href="{% url 'empleado_delete' empleado.pk %}" class="btn btn-sm btn-danger" title="Eliminar">
+                            🗑️
+                        </a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4" class="text-center">No hay empleados registrados.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock content %}
