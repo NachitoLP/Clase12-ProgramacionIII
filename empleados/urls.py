@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from applications.home.views import IndexView
+from applications.home.views import IndexView, sessionLogIn, sessionLogOut
 from applications.departamentos.views import ListarDepartamentos
 from applications.empleados.views import EmpleadoListView, EmpleadoDetailView, EmpleadoCreateView, EmpleadoUpdateView, EmpleadoDeleteView
 from django.views.generic.base import RedirectView
@@ -25,6 +25,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', RedirectView.as_view(url='/home/', permanent=False)),
     path('home/', IndexView.as_view(), name='home'),
+    path('sign-in/', sessionLogIn, name='login'),
+    path('log-out/', sessionLogOut, name='logout'),
     path('lista-departamentos', ListarDepartamentos.as_view(), name='departamentos'),
     path('empleados/', EmpleadoListView.as_view(), name='empleado_list'),
     path('empleados/empleado/<int:pk>/', EmpleadoDetailView.as_view(), name='empleado_detail'),

@@ -2,7 +2,8 @@ from django.shortcuts import render
 from django.views.generic import TemplateView,ListView
 from .models import Departamento
 
-class ListarDepartamentos (ListView):
+from django.contrib.auth.mixins import LoginRequiredMixin
+class ListarDepartamentos (LoginRequiredMixin,ListView):
     template_name = 'departamentos/lista_departamentos.html'
     Model = Departamento
     queryset = Departamento.objects.all()

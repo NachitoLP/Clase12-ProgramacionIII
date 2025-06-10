@@ -8,6 +8,8 @@ with open("secrets.json") as s:
 
 SECRET_KEY = secrets["SECRET_KEY"]
 
+LOGIN_URL = secrets["LOGIN_URL"]
+
 INSTALLED_APPS = [
     'jazzmin',
     'django.contrib.admin',
